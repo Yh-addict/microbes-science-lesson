@@ -50,14 +50,14 @@
             background: rgba(0,0,0,0.3); padding: 4px 14px; border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; gap: 6px; font-size: 1.1rem; color: var(--gold); font-weight: bold;
         }
-        .reset-timer-btn {
+        .timer-ctrl-btn {
             background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white;
             width: 34px; height: 34px; border-radius: 50%; cursor: pointer; display: flex; align-items: center;
-            justify-content: center; transition: 0.3s; font-size: 0.9rem;
+            justify-content: center; transition: 0.3s; font-size: 0.85rem;
         }
-        .reset-timer-btn:hover { background: var(--gold); color: #000; transform: rotate(180deg); }
+        .timer-ctrl-btn:hover { background: var(--gold); color: #000; transform: scale(1.1); }
 
-        /* تخطيط الصفحة الرئيسي المتوازن (يمين: مجموعات وفلتر حقوق | وسط: درس) */
+        /* تخطيط الصفحة الرئيسي المتوازن */
         .main-layout {
             display: grid;
             grid-template-columns: 260px 1fr;
@@ -90,7 +90,6 @@
             text-align: center; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 8px;
         }
 
-        /* المجموعات */
         .group-item-box {
             background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 12px; text-align: center;
         }
@@ -111,7 +110,6 @@
         }
         .random-group-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 179, 0, 0.5); }
 
-        /* الفوتر الجانبي للحقوق والواتساب */
         .side-footer {
             margin-top: auto;
             padding-top: 10px;
@@ -183,14 +181,12 @@
         }
         .nav-btn:hover { background: var(--gold-dark); transform: translateY(-2px); }
 
-        /* أزرار الأسئلة غير المحددة مسبقاً ( لنافس ) */
         .quiz-option-btn {
             background: #475569; color: white; border: none; padding: 8px 16px; border-radius: 20px; font-size: 0.95rem; font-weight: 700;
             cursor: pointer; transition: 0.3s; display: inline-flex; align-items: center; justify-content: center;
         }
         .quiz-option-btn:hover { background: var(--primary); transform: translateY(-2px); }
 
-        /* شريط الذكريات */
         .memory-ticker {
             background: #e0f2f1; border-right: 6px solid var(--primary); padding: 12px; border-radius: 10px;
             overflow: hidden; white-space: nowrap; margin-bottom: 15px; font-weight: bold; color: var(--primary-dark); font-size: 1.1rem;
@@ -198,22 +194,48 @@
         .memory-ticker span { display: inline-block; animation: tickerAnimLeft 15s linear infinite; }
         @keyframes tickerAnimLeft { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
 
-        /* بوكسات الأهداف والبطاقات */
         .goal-box {
             background: #f8fafc; border-radius: 12px; padding: 10px 15px; margin-bottom: 8px;
             border-right: 6px solid; font-weight: 800; display: flex; align-items: center; gap: 10px; font-size: 1.05rem;
         }
 
-        /* تنسيق الحاويات لصور الشرائح لتظهر كاملة وبدون شريط تمرير */
-        .tall-img-box {
-            background: #f1f5f9; height: 100%; max-height: 380px; border-radius: 16px; display: flex; align-items: center; justify-content: center;
-            border: 2px dashed #94a3b8; overflow: hidden; padding: 5px;
+        /* حاوية الصور الملتصقة على حجم محتواها بدقة */
+        .fit-media-box {
+            display: inline-block;
+            background: #f1f5f9;
+            border-radius: 14px;
+            border: 2px dashed #94a3b8;
+            padding: 4px;
+            line-height: 0;
+            max-height: 380px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        .tall-img-box img {
-            width: 100%; height: 100%; object-fit: contain; border-radius: 12px;
+        .fit-media-box img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            max-height: 360px;
+            object-fit: contain;
+            border-radius: 10px;
         }
 
-        /* زر الروبوت المدمج في ص12 */
+        .fit-video-box {
+            display: inline-block;
+            background: #000;
+            border-radius: 14px;
+            border: 2px dashed var(--gold);
+            padding: 4px;
+            line-height: 0;
+            overflow: hidden;
+        }
+        .fit-video-box video {
+            display: block;
+            border-radius: 10px;
+            outline: none;
+            max-width: 100%;
+        }
+
         .robot-inline-btn {
             display: inline-flex;
             align-items: center;
@@ -230,6 +252,7 @@
             box-shadow: 0 6px 18px rgba(0, 131, 143, 0.4);
             transition: all 0.3s ease;
             margin-top: 10px;
+            text-decoration: none;
         }
         .robot-inline-btn:hover {
             transform: scale(1.05);
@@ -252,7 +275,6 @@
         .interactive-card { background: #f8fafc; border-radius: 14px; padding: 1rem; border: 2px solid #e2e8f0; cursor: pointer; transition: 0.3s; font-weight: 700; }
         .interactive-card:hover { background: #e0f2f1; border-color: var(--primary); }
 
-        /* تنسيقات مخصصة لشرائح المسابقات والختام */
         .quiz-card-box {
             background: #0f172a; color: white; border-radius: 14px; padding: 1rem; text-align: center; border: 2px solid var(--gold);
         }
@@ -263,21 +285,10 @@
             width: 100%; justify-content: center; font-size: 0.9rem; padding: 8px 12px; border-radius: 10px;
         }
 
-        /* تنسيق بوكسات تحدي الروبوت ص13 الجديدة */
         .robot-challenge-box {
             background: #f8fafc; border: 2px solid #cbd5e1; border-radius: 14px; padding: 12px 15px; text-align: right; transition: 0.3s; cursor: pointer;
         }
         .robot-challenge-box:hover { border-color: var(--primary); background: #f0fdf4; }
-
-        .slide-media-video {
-            width: 100%; max-width: 650px; border-radius: 16px; border: 3px solid var(--gold); box-shadow: 0 8px 20px rgba(0,0,0,0.3); outline: none;
-        }
-        .card-img-container {
-            width: 100%; height: 150px; border-radius: 12px; overflow: hidden; margin-top: 8px; border: 2px dashed #94a3b8; background: #f1f5f9; display: flex; align-items: center; justify-content: center;
-        }
-        .card-img-container img {
-            width: 100%; height: 100%; object-fit: contain;
-        }
     </style>
 </head>
 <body>
@@ -297,7 +308,8 @@
 
         <div class="timer-wrapper">
             <div class="timer-container"><i class="fas fa-stopwatch"></i><span id="lesson-timer">40:00</span></div>
-            <button class="reset-timer-btn" onclick="resetTimer()" title="إعادة ضبط الوقت"><i class="fas fa-redo-alt"></i></button>
+            <button class="timer-ctrl-btn" onclick="startTimer()" title="بدء الوقت"><i class="fas fa-play"></i></button>
+            <button class="timer-ctrl-btn" onclick="resetTimer()" title="إعادة ضبط الوقت"><i class="fas fa-redo-alt"></i></button>
         </div>
     </div>
 
@@ -351,29 +363,33 @@
         <!-- المساحة البيضاء الوسطى: محتوى الشرائح -->
         <div class="slides-container">
 
-            <!-- 1. الشريحة الأولى (معدلة بالترتيب الجديد وخريطة المملكة وفيديو السلام الملكي) -->
-            <div class="slide">
+            <!-- 1. الشريحة الأولى -->
+            <div class="slide active">
                 <div style="text-align: center; width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 8px;">
                     <h2 style="color: var(--primary-dark); font-size: 2rem; font-weight: 900; margin: 0;">بسم الله الرحمن الرحيم</h2>
                     <span style="background: var(--gold); color:#000; padding:5px 18px; border-radius:20px; font-weight:900; font-size: 1.1rem; display:inline-block;">دمت سالماً يا وطني</span>
                     <p style="font-size: 1rem; line-height: 1.5; color: #1e293b; font-weight: 700; margin: 0;">
                         اللهم احفظ وطننا الغالي المملكة العربية السعودية من كل سوء ومكروه، وأيد قادتنا بالنصر والتمكين، وأعز بهم الإسلام والمسلمين.
                     </p>
-                    <div style="width: 140px; height: 110px; background: #f1f5f9; border-radius: 12px; border: 2px dashed var(--primary); overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 4px;">
-                        <img src="saudi_map.png" alt="خريطة المملكة العربية السعودية" style="width: 100%; height: 100%; object-fit: contain;">
+                    <div class="fit-media-box" style="width: 140px; height: 110px;">
+                        <img src="saudi_map.png" alt="خريطة المملكة العربية السعودية">
                     </div>
                     <div style="display: flex; justify-content: center; gap: 25px; width: 100%;">
                         <div style="text-align: center; font-weight: bold; font-size: 0.9rem; color: var(--primary-dark);">
-                            <img src="king_salman.png" alt="الملك سلمان" style="width: 90px; height: 75px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto 3px; border: 2px solid var(--gold);">
+                            <div class="fit-media-box" style="width: 90px; height: 75px; margin-bottom: 3px;">
+                                <img src="king_salman.png" alt="الملك سلمان" style="object-fit: cover;">
+                            </div>
                             يمين الملك سلمان
                         </div>
                         <div style="text-align: center; font-weight: bold; font-size: 0.9rem; color: var(--primary-dark);">
-                            <img src="crown_prince.png" alt="الأمير محمد" style="width: 90px; height: 75px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto 3px; border: 2px solid var(--gold);">
+                            <div class="fit-media-box" style="width: 90px; height: 75px; margin-bottom: 3px;">
+                                <img src="crown_prince.png" alt="الأمير محمد" style="object-fit: cover;">
+                            </div>
                             يسار الأمير محمد
                         </div>
                     </div>
-                    <div style="width: 100%; display: flex; justify-content: center;">
-                        <video class="slide-media-video" controls style="max-height: 130px; width: 350px;">
+                    <div class="fit-video-box">
+                        <video controls style="height: 120px; width: 320px;">
                             <source src="saudi-national.mp4" type="video/mp4">
                             متصفحك لا يدعم تشغيل هذا الفيديو.
                         </video>
@@ -408,7 +424,7 @@
                 </div>
             </div>
 
-            <!-- 4. الشريحة الرابعة (الصورة تظهر كاملة بدون قص) -->
+            <!-- 4. الشريحة الرابعة -->
             <div class="slide">
                 <div class="slide-title" style="justify-content: center;"><i class="fas fa-bookmark"></i> عنوان الدرس الجديد</div>
                 <div class="slide-content grid-2" style="align-items: center;">
@@ -416,8 +432,10 @@
                         <h1 style="font-size: 2.3rem; color: var(--primary-dark); margin-bottom: 15px; font-weight: 900;">عمليات الحياة في المخلوقات الحيّة الدقيقة</h1>
                         <p style="font-size: 1.2rem; color: #64748b; font-weight: 800;">الصف السادس الابتدائي - الفصل الدراسي الأول</p>
                     </div>
-                    <div class="tall-img-box">
-                        <img src="lesson_title_img.png" alt="عنوان الدرس" style="object-fit: contain;">
+                    <div style="text-align: center;">
+                        <div class="fit-media-box">
+                            <img src="lesson_title_img.png" alt="عنوان الدرس">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -441,7 +459,7 @@
                 </div>
             </div>
 
-            <!-- 6. الشريحة السادسة (الصورة تظهر كاملة بدون قص) -->
+            <!-- 6. الشريحة السادسة -->
             <div class="slide">
                 <div class="slide-title"><i class="fas fa-bullseye"></i> أهداف الدرس (المناقشة النشطة)</div>
                 <div class="slide-content grid-2" style="align-items: center;">
@@ -452,40 +470,46 @@
                         <div class="goal-box" style="border-color: #ff7043;"><span>🦠</span> أن يصنف الطلائعيات من حيث تغذيتها.</div>
                         <div class="goal-box" style="border-color: #004d40;"><span>⚡</span> أن يميز بين البكتيريا والبدائيات.</div>
                     </div>
-                    <div class="tall-img-box">
-                        <img src="experiment_img.png" alt="أهداف الدرس والتجربة" style="object-fit: contain;">
+                    <div style="text-align: center;">
+                        <div class="fit-media-box">
+                            <img src="experiment_img.png" alt="أهداف الدرس والتجربة">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 7. الشريحة السابعة (ربط فيديو التجربة) -->
+            <!-- 7. الشريحة السابعة -->
             <div class="slide">
                 <div class="slide-title"><i class="fas fa-flask"></i> التجربة العملية: ما درجات الحرارة التي تحفز نمو الخميرة؟</div>
                 <div class="slide-content" style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                     <p style="font-size: 1.2rem; margin-bottom: 10px;">تعالوا نشاهد تجربة العالمة تالا الشهراني المنزلية:</p>
-                    <video class="slide-media-video" controls style="max-height: 260px;">
-                        <source src="experiment_video.mp4" type="video/mp4">
-                        متصفحك لا يدعم تشغيل هذا الفيديو.
-                    </video>
+                    <div class="fit-video-box">
+                        <video controls style="max-height: 260px; width: 450px;">
+                            <source src="experiment_video.mp4" type="video/mp4">
+                            متصفحك لا يدعم تشغيل هذا الفيديو.
+                        </video>
+                    </div>
                     <button class="nav-btn" style="margin: 12px auto 0; font-size: 1.05rem; padding: 8px 22px;" onclick="openCustomModal('استخلاص النتائج العلمية', '✨ <b style=\'font-size:1.3rem; color:var(--primary-dark);\'>استخلاص النتائج:</b><br><br>الكأس ذات الماء الدافئ تحتوي على خلايا خميرة نشطة ومتكاثرة بشكل أكبر بكثير بسبب تفاعل السكر والحرارة المعتدلة.')">
                         عرض استخلاص النتائج 🔬
                     </button>
                 </div>
             </div>
 
-            <!-- 8. الشريحة الثامنة (بدون شريط تمرير، الصورة كاملة ومضغوطة لتناسب الحاوية) -->
+            <!-- 8. الشريحة الثامنة -->
             <div class="slide">
                 <div class="slide-title"><i class="fas fa-video"></i> التعلم التأملي (شاهد - دون - شارك)</div>
                 <div class="slide-content" style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; padding: 0;">
                     <p style="margin-bottom: 8px; font-size: 1.1rem;">شاهدي الفيديو التعليمي التالي بتركيز، ودوني ملاحظاتك لمناقشتها سوياً:</p>
-                    <video class="slide-media-video" controls style="max-height: 280px; width: auto; max-width: 100%;">
-                        <source src="intro_video.mp4" type="video/mp4">
-                        متصفحك لا يدعم تشغيل هذا الفيديو.
-                    </video>
+                    <div class="fit-video-box">
+                        <video controls style="max-height: 280px; width: 480px;">
+                            <source src="intro_video.mp4" type="video/mp4">
+                            متصفحك لا يدعم تشغيل هذا الفيديو.
+                        </video>
+                    </div>
                 </div>
             </div>
 
-            <!-- 9. الشريحة التاسعة (ربط صورة المحتوى العلمي) -->
+            <!-- 9. الشريحة التاسعة -->
             <div class="slide">
                 <div class="slide-title"><i class="fas fa-sitemap"></i> المحتوى العلمي للمخلوقات الحية الدقيقة</div>
                 <div class="slide-content grid-3" style="grid-template-columns: 1fr 2fr 1fr; align-items: center;">
@@ -499,8 +523,10 @@
                             <p style="font-size:0.9rem;">كالخميرة وعفن الخبز، تستخدم في الأغذية وصنع الأدوية.</p>
                         </div>
                     </div>
-                    <div class="tall-img-box">
-                        <img src="microbes_structure.png" alt="تركيب المخلوقات الحية الدقيقة" style="object-fit: contain;">
+                    <div style="text-align: center;">
+                        <div class="fit-media-box">
+                            <img src="microbes_structure.png" alt="تركيب المخلوقات الحية الدقيقة">
+                        </div>
                     </div>
                     <div>
                         <div class="interactive-card" style="padding: 10px; margin-bottom: 10px;">
@@ -549,7 +575,7 @@
                 </div>
             </div>
 
-            <!-- 12. الشريحة الثانية عشرة (الصورة كاملة، والرابط المعدل ليوتيوب) -->
+            <!-- 12. الشريحة الثانية عشرة -->
             <div class="slide">
                 <div class="slide-title"><i class="fas fa-robot"></i> مهمة الروبوت لاستكشاف العالم المجهري</div>
                 <div class="slide-content grid-2" style="align-items: center;">
@@ -559,13 +585,15 @@
                         <div style="background:#f1f5f9; padding:12px; border-radius:12px; font-size:1rem; border-right:6px solid var(--accent); text-align: right;"><strong>الهدف العلمي:</strong> أن تتعرف الطالبة على أمثلة من المخلوقات الدقيقة وخصائصها.</div>
                         
                         <div style="margin-top: 12px;">
-                            <a href="https://youtu.be/rlmP8-JtrYw?si=P3J7pIvcKqDh2j2B" target="_blank" class="robot-inline-btn" style="text-decoration: none;">
+                            <a href="https://youtu.be/rlmP8-JtrYw?si=P3J7pIvcKqDh2j2B" target="_blank" class="robot-inline-btn">
                                 <i class="fas fa-play-circle fa-lg"></i> مشاهدة فيديو الاستكشاف والمهمة عبر يوتيوب
                             </a>
                         </div>
                     </div>
-                    <div class="tall-img-box">
-                        <img src="robot_task_img.png" alt="مهمة الروبوت" style="object-fit: contain;">
+                    <div style="text-align: center;">
+                        <div class="fit-media-box">
+                            <img src="robot_task_img.png" alt="مهمة الروبوت">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -603,26 +631,26 @@
                 </div>
             </div>
 
-            <!-- 14. الشريحة الرابعة عشرة (الصورة ممتدة للأسفل وصافية تماماً بدون قص) -->
+            <!-- 14. الشريحة الرابعة عشرة -->
             <div class="slide">
                 <div class="slide-title"><i class="fas fa-brain"></i> مهارات التفكير العليا (تحدّي العلماء الصغيرات)</div>
                 <div class="slide-content grid-2">
-                    <div>
-                        <div class="interactive-card" onclick="openCustomModal('حل المشكلات', '<b>كيف يمكن للروبوتات مساعدة العلماء في دراسة المخلوقات الدقيقة؟</b><br><br><b style=\'color:var(--primary-dark);\'>الإجابة:</b> قد تساعد الروبوتات في تشغيل الأجهزة وجمع العينات وتحليل البيانات.')" style="padding: 0.8rem;">
+                    <div style="text-align: center;">
+                        <div class="interactive-card" onclick="openCustomModal('حل المشكلات', '<b>كيف يمكن للروبوتات مساعدة العلماء في دراسة المخلوقات الدقيقة؟</b><br><br><b style=\'color:var(--primary-dark);\'>الإجابة:</b> قد تساعد الروبوتات في تشغيل الأجهزة وجمع العينات وتحليل البيانات.')" style="padding: 0.8rem; margin-bottom: 8px; text-align: right;">
                             <h3 style="font-size: 1.1rem;">🧩 حل المشكلات</h3>
                             <p style="font-size: 0.9rem; color: #64748b; margin-top: 2px;">كيف تساعد الروبوتات العلماء؟</p>
                         </div>
-                        <div class="card-img-container" style="height: 180px;">
-                            <img src="problem_solving_1.png" alt="حل المشكلات" style="object-fit: contain; width: 100%; height: 100%;">
+                        <div class="fit-media-box" style="height: 160px;">
+                            <img src="problem_solving_1.png" alt="حل المشكلات" style="height: 100%;">
                         </div>
                     </div>
-                    <div>
-                        <div class="interactive-card" onclick="openCustomModal('التفكير السببي', '<b>ماذا قد يحدث للبيئة إذا اختفت المخلوقات الدقيقة التي تحلل بقايا الكائنات الحية؟</b><br><br><b style=\'color:var(--primary-dark);\'>الإجابة:</b> قد تقل إعادة العناصر الغذائية إلى التربة وتتأثر الأنظمة البيئية سلباً.')" style="padding: 0.8rem;">
+                    <div style="text-align: center;">
+                        <div class="interactive-card" onclick="openCustomModal('التفكير السببي', '<b>ماذا قد يحدث للبيئة إذا اختفت المخلوقات الدقيقة التي تحلل بقايا الكائنات الحية؟</b><br><br><b style=\'color:var(--primary-dark);\'>الإجابة:</b> قد تقل إعادة العناصر الغذائية إلى التربة وتتأثر الأنظمة البيئية سلباً.')" style="padding: 0.8rem; margin-bottom: 8px; text-align: right;">
                             <h3 style="font-size: 1.1rem;">⚖️ التفكير السببي</h3>
                             <p style="font-size: 0.9rem; color: #64748b; margin-top: 2px;">ماذا لو اختفت المحللات؟</p>
                         </div>
-                        <div class="card-img-container" style="height: 180px;">
-                            <img src="problem_solving_2.png" alt="التفكير السببي" style="object-fit: contain; width: 100%; height: 100%;">
+                        <div class="fit-media-box" style="height: 160px;">
+                            <img src="problem_solving_2.png" alt="التفكير السببي" style="height: 100%;">
                         </div>
                     </div>
                 </div>
@@ -661,13 +689,13 @@
                 </div>
             </div>
 
-            <!-- 16. الشريحة السادسة عشرة -->
+            <!-- 16. الشريحة السادسة عشرة (الرابط الإثراي المحدث) -->
             <div class="slide">
                 <div class="slide-title" style="justify-content: center;"><i class="fas fa-laptop"></i> الإثراء المنزلي والروابط المعرفية</div>
                 <div class="slide-content" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
                     <p style="font-size: 1.3rem; margin-bottom: 20px;">تابعي الرابط الرقمي في المنزل للاستزادة حول معالجة المياه ومستعمرات البكتيريا البدائية:</p>
-                    <a href="https://www.iro.gov.sa" target="_blank" class="nav-btn" style="display: inline-flex; margin: 0 auto; font-size: 1.2rem; padding: 12px 35px;">
-                        <i class="fas fa-external-link-alt"></i> فتح رابط الإثراء الرقمي ويوتيوب التعليمي
+                    <a href="https://www.youtube.com/watch?v=rlmP8-JtrYw" target="_blank" class="nav-btn" style="display: inline-flex; margin: 0 auto; font-size: 1.2rem; padding: 12px 35px;">
+                        <i class="fab fa-youtube"></i> فتح رابط الإثراء التعليمي عبر يوتيوب
                     </a>
                 </div>
             </div>
@@ -723,7 +751,7 @@
                 </div>
             </div>
 
-            <!-- 19. الشريحة التاسعة عشرة (الختام مع عبارة خط المراعي واللون المناسب) -->
+            <!-- 19. الشريحة التاسعة عشرة (الختام) -->
             <div class="slide">
                 <div class="slide-title" style="justify-content: center;"><i class="fas fa-flag-checkered"></i> ختام الدرس والمهام المنزلية</div>
                 <div class="slide-content" style="text-align: center; display: flex; flex-direction: column; justify-content: space-evenly; height: 100%;">
@@ -800,17 +828,27 @@
         function prevSlide() { if(currentSlide > 0) { currentSlide--; updateSlide(); } }
         function goToSlide(n) { currentSlide = n; updateSlide(); }
 
-        // المؤقت الزمني 40 دقيقة مع زر إعادة الضبط (ريست)
+        // المؤقت الزمني 40 دقيقة مع أزرار التحكم (بدء وإعادة ضبط)
         let timeSec = 40 * 60;
-        let timerInterval = setInterval(() => {
-            if(timeSec > 0) {
-                timeSec--;
-                let m = Math.floor(timeSec / 60), s = timeSec % 60;
-                document.getElementById('lesson-timer').textContent = `${m < 10 ? '0':''}${m}:${s < 10 ? '0':''}${s}`;
-            }
-        }, 1000);
+        let timerInterval = null;
+
+        function startTimer() {
+            if (timerInterval) return; // منع التكرار إذا كان يعمل بالفعل
+            timerInterval = setInterval(() => {
+                if(timeSec > 0) {
+                    timeSec--;
+                    let m = Math.floor(timeSec / 60), s = timeSec % 60;
+                    document.getElementById('lesson-timer').textContent = `${m < 10 ? '0':''}${m}:${s < 10 ? '0':''}${s}`;
+                } else {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+            }, 1000);
+        }
 
         function resetTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
             timeSec = 40 * 60;
             document.getElementById('lesson-timer').textContent = "40:00";
         }
@@ -819,7 +857,6 @@
         let remainingGroupsForSelection = [...groupsList];
         let scores = { m1: 0, m2: 0, m3: 0 };
 
-        // دالة الاختيار العشوائي بدون تكرار
         function selectRandomGroupNoRepeat() {
             if (remainingGroupsForSelection.length === 0) {
                 remainingGroupsForSelection = ["مجموعة الأمل 🔬", "مجموعة الطموح 🔍", "مجموعة الزهور 🌟"];
@@ -866,7 +903,6 @@
             document.getElementById('custom-modal').style.display = 'none';
         }
 
-        // دالة مخصصة لفتح رسائل اختبارات نافس
         function openNafisModal(isCorrect, optionTitle, explanation) {
             let title = isCorrect ? "🎉 إجابة صحيحة وموفقة!" : "💡 محاولة رائعة، حاولي مجدداً";
             let colorStyle = isCorrect ? "color: #16a34a;" : "color: #dc2626;";
@@ -883,7 +919,6 @@
             openCustomModal(title, content);
         }
 
-        // دالة كشف الإجابة السرية في تحدي الروبوت (ص13)
         function toggleSecretAnswer(element) {
             const ansDiv = element.querySelector('.secret-ans');
             if (ansDiv.style.display === 'none' || ansDiv.style.display === '') {
